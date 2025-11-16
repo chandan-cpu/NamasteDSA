@@ -4,10 +4,10 @@ function BankAccount(customerName,accountNumber,balance=0)
     this.accountNumber=accountNumber;
     this.balance=balance;
 
-    this.deposit=function(amount)
-    {
-        this.balance+=amount;
-    }
+    // this.deposit=function(amount)
+    // {
+    //     this.balance+=amount;
+    // }
 }
 
 // const account1=new BankAccount("Chandan",5000);
@@ -49,3 +49,17 @@ deposit.addEventListener('submit',function(e){
         console.log(account);
     }
 })
+
+
+//Add The Property Using Prototype
+BankAccount.prototype.deposit = function(amount) {
+    this.balance+=amount;
+}
+//Add The Method Using Prototype
+BankAccount.prototype.withdraw = function(amount) {
+    if(amount > this.balance) {
+        console.log("Insufficient balance")
+    } else {
+        this.balance -= amount;
+    }
+}
